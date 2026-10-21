@@ -15,7 +15,7 @@
 - `index.html`：完整页面结构和故事内容
 - `styles.css`：视觉、动画与移动端适配
 - `script.js`：滚动叙事、实时监控、恢复系统等交互
-- `assets/hero-night-market.png`：原创深夜馄饨摊主视觉
+- `assets/night-market-dashboard.png`：原创双摊位夜市驾驶舱主视觉
 - `.nojekyll`：确保 GitHub Pages 原样发布静态文件
 
 ## GitHub Pages 部署
