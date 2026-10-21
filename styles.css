@@ -28,7 +28,7 @@ button { cursor: pointer; }
 .page-progress { position: fixed; z-index: 200; top: 0; left: 0; width: 100%; height: 3px; background: rgba(255,255,255,.04); }
 .page-progress i { display: block; width: 0; height: 100%; background: linear-gradient(90deg,var(--cyan),var(--amber),var(--red)); }
 
-.topbar { position: fixed; z-index: 100; top: 0; left: 0; width: 100%; height: 72px; display: grid; grid-template-columns: 300px 1fr 260px; align-items: center; gap: 24px; padding: 0 3.5vw; background: rgba(3,8,14,.78); border-bottom: 1px solid rgba(95,182,236,.22); backdrop-filter: blur(18px); box-shadow: 0 8px 30px rgba(0,0,0,.18); }
+.topbar { position: fixed; z-index: 100; top: 0; left: 0; width: 100%; height: 72px; min-height: 72px; display: grid; grid-template-columns: 300px 1fr 260px; align-items: center; gap: 24px; padding: 0 3.5vw; overflow: visible; background: rgba(3,8,14,.86); border-bottom: 1px solid rgba(95,182,236,.22); backdrop-filter: blur(18px); box-shadow: 0 8px 30px rgba(0,0,0,.18); }
 .logo { display: flex; align-items: center; gap: 12px; }
 .logo__bowl { display: grid; place-items: center; width: 43px; height: 43px; color: var(--amber); border: 1px solid rgba(255,178,74,.45); border-radius: 50%; font-size: 24px; text-shadow: 0 0 16px var(--amber); }
 .logo b, .logo small { display: block; }
@@ -69,7 +69,7 @@ button { cursor: pointer; }
 .feature-row b { font-size: 12px; }
 .feature-row small { margin-top: 3px; color: #aab7c3; font-size: 11px; }
 
-.live-monitor { position: absolute; top: 92px; right: 3.5vw; width: min(370px,27vw); border-radius: 10px; overflow: hidden; }
+.live-monitor { position: absolute; z-index: 3; top: 104px; right: 3.5vw; width: min(370px,27vw); max-height: calc(100vh - 126px); border-radius: 10px; overflow: hidden; }
 .live-monitor > header { height: 48px; display: flex; align-items: center; gap: 14px; padding: 0 14px; border-bottom: 1px solid var(--line); }
 .live-monitor > header h2 { flex: 1; margin: 0; color: #76d7ff; font-size: 18px; }
 .live-monitor > header span { color: #82909d; font: 11px var(--mono); }
@@ -122,31 +122,50 @@ button { cursor: pointer; }
 .process-card.is-terminated::after { content: "PROCESS TERMINATED"; position: absolute; inset: 45% 20%; display: grid; place-items: center; color: white; border: 2px solid var(--red); background: rgba(80,0,10,.72); font: 700 14px var(--mono); transform: rotate(-5deg); }
 .process-card { position: relative; }
 
-.chapter-dock { margin-top: 14px; padding: 10px 12px 12px; border: 1px solid rgba(133,194,230,.22); border-radius: 10px; background: rgba(2,8,13,.79); backdrop-filter: blur(14px); }
-.chapter-dock > header { display: flex; align-items: baseline; gap: 15px; padding: 0 4px 8px; }
-.chapter-dock h2 { margin: 0; font-size: 16px; }
-.chapter-dock header span { color: #8295a4; font-size: 10px; }
-.chapter-dock__rail { display: grid; grid-template-columns: repeat(7,1fr); gap: 9px; }
-.chapter-tab { position: relative; min-width: 0; height: 92px; display: grid; grid-template-columns: 30px 1fr; grid-template-rows: 1fr auto auto; gap: 0 7px; padding: 0 8px 8px; text-align: left; color: white; border: 1px solid rgba(133,194,230,.25); border-radius: 7px; overflow: hidden; background: rgba(4,13,21,.75); transition: .25s; }
-.chapter-tab:hover, .chapter-tab.is-active { border-color: var(--amber); box-shadow: 0 0 20px rgba(255,178,74,.22),inset 0 0 15px rgba(255,178,74,.06); transform: translateY(-2px); }
-.tab-visual { grid-column: 1 / 3; position: absolute; inset: 0; opacity: .35; background-image: url("assets/night-market-dashboard.png"); background-size: 700%; filter: saturate(.7); mask-image: linear-gradient(black,transparent 72%); }
+.chapter-dock { margin-top: 18px; padding: 16px 16px 18px; border: 1px solid rgba(133,194,230,.25); border-radius: 16px; background: linear-gradient(180deg,rgba(7,18,28,.9),rgba(2,8,13,.93)); box-shadow: 0 20px 60px rgba(0,0,0,.42),inset 0 1px rgba(255,255,255,.04); backdrop-filter: blur(18px); }
+.chapter-dock > header { display: flex; align-items: baseline; gap: 15px; padding: 0 4px 13px; }
+.chapter-dock h2 { margin: 0; font-size: 18px; letter-spacing: .08em; }
+.chapter-dock header span { color: #8fa6b5; font: 11px var(--mono); letter-spacing: .06em; }
+.chapter-dock__rail { position: relative; display: grid; grid-template-columns: repeat(7,1fr); gap: 10px; }
+.chapter-dock__rail::before { content: ""; position: absolute; left: 2%; right: 2%; bottom: 18px; height: 1px; background: linear-gradient(90deg,transparent,rgba(255,178,74,.55),rgba(85,207,255,.4),transparent); }
+.chapter-tab { position: relative; min-width: 0; height: 118px; display: grid; grid-template-columns: 36px 1fr 16px; grid-template-rows: 1fr auto auto; gap: 0 8px; padding: 0 10px 11px; text-align: left; color: white; border: 1px solid rgba(133,194,230,.22); border-radius: 10px; overflow: hidden; background: rgba(4,13,21,.8); transition: border-color .25s,box-shadow .25s,transform .25s; isolation: isolate; }
+.chapter-tab::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg,transparent 32%,rgba(2,7,11,.4) 54%,rgba(2,7,11,.97) 100%); }
+.chapter-tab::after { content: "›"; z-index: 2; grid-column: 3; grid-row: 2 / 4; align-self: center; color: #6f8797; font-size: 23px; transition: .25s; }
+.chapter-tab:hover, .chapter-tab.is-active { border-color: var(--amber); box-shadow: 0 0 28px rgba(255,178,74,.26),inset 0 0 24px rgba(255,178,74,.08); transform: translateY(-4px); }
+.chapter-tab.is-active::after { color: var(--amber); transform: translateX(2px); }
+.tab-visual { grid-column: 1 / 4; position: absolute; inset: 0; z-index: -2; opacity: .52; background-image: url("assets/night-market-dashboard.png"); background-size: 700%; filter: saturate(.85) contrast(1.08); mask-image: linear-gradient(black,transparent 90%); transition: opacity .25s,filter .25s,transform .35s; }
+.chapter-tab:hover .tab-visual, .chapter-tab.is-active .tab-visual { opacity: .82; filter: saturate(1.15) contrast(1.08); transform: scale(1.04); }
 .tab-visual--1 { background-position: 45% 45%; }.tab-visual--2 { background-position: 50% 42%; }.tab-visual--3 { background-position: 85% 45%; }.tab-visual--4 { background-position: 22% 44%; }.tab-visual--5 { background-position: 55% 47%; }.tab-visual--6 { background-position: 90% 45%; filter: saturate(1.1) hue-rotate(-8deg); }.tab-visual--7 { background-position: 70% 80%; }
-.chapter-tab > b { z-index: 1; grid-row: 2 / 4; align-self: center; font: 700 18px var(--mono); }
-.chapter-tab > strong { z-index: 1; grid-column: 2; grid-row: 2; font-size: 12px; }
-.chapter-tab > small { z-index: 1; grid-column: 2; grid-row: 3; color: #abb9c3; font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.chapter-tab > b { z-index: 1; grid-row: 2 / 4; align-self: center; color: var(--amber); font: 700 20px var(--mono); text-shadow: 0 0 14px rgba(255,178,74,.42); }
+.chapter-tab > strong { z-index: 1; grid-column: 2; grid-row: 2; font-size: 13px; }
+.chapter-tab > small { z-index: 1; grid-column: 2; grid-row: 3; color: #b8c7d0; font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .story { padding: 130px 6vw 160px; background: radial-gradient(circle at 75% 30%,rgba(31,114,152,.1),transparent 25%),#050a10; }
 .story__heading { max-width: 1200px; margin: 0 auto 95px; }
 .story__heading p { color: var(--cyan); font: 12px var(--mono); letter-spacing: .16em; }
 .story__heading h2 { margin: 18px 0 20px; font: 800 clamp(48px,6vw,88px)/1.12 var(--serif); letter-spacing: -.05em; }
 .story__heading > span { color: var(--muted); font-size: 16px; }
-.story__layout { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: minmax(0,1fr) 390px; gap: 7vw; align-items: start; }
-.story-chapter { min-height: 74vh; padding: 8vh 0 12vh; opacity: .26; transform: translateY(25px); transition: .5s; }
-.story-chapter.is-active { opacity: 1; transform: none; }
-.chapter-no { display: block; padding-bottom: 13px; color: var(--cyan); border-bottom: 1px solid rgba(101,180,222,.25); font: 12px var(--mono); letter-spacing: .12em; }
-.story-chapter h3 { margin: 35px 0; font: 800 clamp(40px,5vw,70px)/1.18 var(--serif); letter-spacing: -.04em; }
-.story-chapter p { max-width: 740px; color: #c2ccd2; font: 17px/2 var(--serif); }
-.story-chapter blockquote { margin: 38px 0 0; padding: 20px 25px; color: white; border-left: 4px solid var(--amber); background: linear-gradient(90deg,rgba(255,178,74,.1),transparent); font: 700 22px/1.7 var(--serif); }
+.story__layout { max-width: 1380px; margin: 0 auto; display: grid; grid-template-columns: minmax(0,1fr) 390px; gap: 6vw; align-items: start; }
+.story-chapter { position: relative; min-height: 68vh; margin-bottom: 11vh; padding: clamp(42px,6vw,76px); overflow: hidden; opacity: .3; border: 1px solid rgba(114,166,198,.17); border-radius: 24px; background: linear-gradient(140deg,rgba(13,27,39,.93),rgba(4,10,16,.96) 58%); box-shadow: 0 28px 80px rgba(0,0,0,.28); transform: translateY(25px) scale(.985); transition: opacity .5s,transform .5s,border-color .5s,box-shadow .5s; isolation: isolate; }
+.story-chapter::before { content: ""; position: absolute; z-index: -2; inset: 0; opacity: .18; background-image: linear-gradient(90deg,rgba(4,10,16,.55),rgba(4,10,16,.94) 72%),url("assets/night-market-dashboard.png"); background-size: auto 100%,cover; background-position: center; filter: saturate(.9) contrast(1.1); transition: opacity .5s,transform 1s; }
+.story-chapter::after { content: attr(data-index); position: absolute; z-index: -1; right: 3%; bottom: -8%; color: rgba(255,255,255,.035); font: 900 clamp(150px,22vw,300px)/1 var(--mono); letter-spacing: -.12em; }
+.story-chapter.is-active { opacity: 1; border-color: rgba(255,178,74,.34); box-shadow: 0 38px 100px rgba(0,0,0,.45),0 0 42px rgba(255,178,74,.08),inset 0 1px rgba(255,255,255,.05); transform: none; }
+.story-chapter.is-active::before { opacity: .36; transform: scale(1.025); }
+#chapter-1::before { background-position: center,38% center; }
+#chapter-2::before { background-position: center,45% center; }
+#chapter-3::before { background-position: center,78% center; }
+#chapter-4::before { background-position: center,27% center; }
+#chapter-5::before { background-position: center,52% center; }
+#chapter-6::before { background-image: linear-gradient(90deg,rgba(28,2,7,.68),rgba(5,5,10,.95) 72%),url("assets/night-market-dashboard.png"); background-position: center,88% center; }
+#chapter-7::before { background-position: center,65% 78%; }
+.chapter-no { display: inline-flex; align-items: center; gap: 12px; padding: 9px 14px; color: var(--cyan); border: 1px solid rgba(101,180,222,.26); border-radius: 999px; background: rgba(2,10,16,.56); font: 11px var(--mono); letter-spacing: .12em; }
+.chapter-no::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 12px currentColor; }
+.story-chapter h3 { max-width: 760px; margin: 38px 0 30px; font: 800 clamp(42px,5vw,72px)/1.12 var(--serif); letter-spacing: -.05em; text-wrap: balance; text-shadow: 0 8px 35px rgba(0,0,0,.48); }
+.story-chapter p { max-width: 700px; color: #d0d8dd; font: 18px/2 var(--serif); }
+.story-chapter blockquote { max-width: 700px; margin: 42px 0 0; padding: 22px 26px; color: white; border: 1px solid rgba(255,178,74,.22); border-left: 4px solid var(--amber); border-radius: 0 12px 12px 0; background: linear-gradient(90deg,rgba(255,178,74,.14),rgba(3,9,14,.52)); box-shadow: 0 16px 36px rgba(0,0,0,.2); font: 700 23px/1.65 var(--serif); }
+.story-chapter--error { border-color: rgba(255,66,86,.25); }
+.story-chapter--error.is-active { border-color: rgba(255,66,86,.55); box-shadow: 0 38px 100px rgba(0,0,0,.45),0 0 48px rgba(255,32,64,.13); }
+.story-chapter--error .chapter-no { color: #ff6172; border-color: rgba(255,66,86,.3); }
 .test-row { display: grid; grid-template-columns: repeat(3,1fr); margin-top: 32px; border: 1px solid var(--line); }
 .test-row span { padding: 16px; border-right: 1px solid var(--line); color: var(--muted); font-size: 12px; }
 .test-row span:last-child { border: 0; }
@@ -233,7 +252,7 @@ body.is-repaired .process-card--risk { opacity: .3; }
   .hero-copy h2 { font-size: 24px; }
   .hero-copy__intro { max-width: 600px; font-size: 16px; }
   .feature-row { flex-wrap: wrap; }
-  .live-monitor { position: relative; top: auto; right: auto; width: 100%; max-width: none; margin-top: 12px; }
+  .live-monitor { position: relative; top: auto; right: auto; width: 100%; max-width: none; max-height: none; margin-top: 12px; }
   .duel { width: 100%; grid-template-columns: 1fr; margin-top: 14px; }
   .process-card__body { grid-template-columns: 1.25fr .75fr; }
   .queue-box { display: block; }
@@ -242,7 +261,7 @@ body.is-repaired .process-card--risk { opacity: .3; }
   .story { padding: 100px 22px 120px; }
   .story__layout { grid-template-columns: 1fr; }
   .debt-console { order: -1; position: relative; top: auto; margin-bottom: 45px; }
-  .story-chapter { min-height: auto; padding: 65px 0 95px; opacity: 1; transform: none; }
+  .story-chapter { min-height: auto; margin-bottom: 30px; padding: 46px 38px 58px; opacity: 1; transform: none; }
   .final-quote { grid-template-columns: 1fr; }
   .final-quote__image { min-height: 420px; }
   .final-quote__copy { padding: 70px 24px 90px; }
@@ -270,8 +289,11 @@ body.is-repaired .process-card--risk { opacity: .3; }
   .queue-box { display: none; }
   .chapter-dock > header span { display: none; }
   .story__heading h2 { font-size: 46px; }
-  .story-chapter h3 { font-size: 38px; }
-  .story-chapter p { font-size: 16px; }
+  .story-chapter { padding: 34px 24px 42px; border-radius: 17px; }
+  .story-chapter::after { right: 5%; bottom: -2%; font-size: 125px; }
+  .story-chapter h3 { margin: 28px 0 22px; font-size: 38px; }
+  .story-chapter p { font-size: 16px; line-height: 1.85; }
+  .story-chapter blockquote { margin-top: 28px; padding: 18px 19px; font-size: 19px; }
   .test-row { grid-template-columns: 1fr; }
   .test-row span { border-right: 0; border-bottom: 1px solid var(--line); }
   .price-duel { flex-direction: column; align-items: stretch; }
