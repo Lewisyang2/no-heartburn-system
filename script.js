@@ -8,6 +8,13 @@ const sceneData = {
   recovery: { label: 'RECOVERED', debt: 0, linHealth: 100, qianHealth: 0, linQueue: 32, qianQueue: 0, hint: '危险进程已移除，世界恢复稳定', logs: [['INFO','不安全进程隔离完成'],['PASS','林记 v3.1 全量回归通过'],['PASS','全街生产环境零报错']] }
 };
 
+document.documentElement.scrollLeft = 0;
+document.body.scrollLeft = 0;
+window.addEventListener('pageshow', () => {
+  document.documentElement.scrollLeft = 0;
+  document.body.scrollLeft = 0;
+});
+
 const chapters = [...document.querySelectorAll('.story-chapter')];
 const tabs = [...document.querySelectorAll('.chapter-tab')];
 const consoleLog = document.querySelector('#consoleLog');
