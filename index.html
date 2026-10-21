@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080807">
+  <meta name="description" content="《不烧心系统》——如果程序员来设计世界，夜市就是高并发进程池，而胃，是唯一的生产环境。">
+  <title>不烧心系统｜如果程序员来设计世界</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#story">跳到故事正文</a>
+
+  <div class="ambient" aria-hidden="true">
+    <div class="night-glow night-glow--red"></div>
+    <div class="night-glow night-glow--amber"></div>
+    <div class="grain"></div>
+    <div class="steam-field" id="steamField"></div>
+  </div>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="返回顶部">
+      <span class="brand__mark">胃</span>
+      <span><b>不烧心系统</b><small>NO HEARTBURN SYSTEM</small></span>
+    </a>
+    <nav class="top-nav" aria-label="页面导航">
+      <a href="#story">运行日志</a>
+      <a href="#architecture">系统架构</a>
+      <button class="sound-toggle" id="motionToggle" type="button" aria-pressed="false">
+        <span class="pulse-dot"></span><span class="toggle-label">动态运行中</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__eyebrow reveal">参赛命题 / 如果程序员来设计世界</div>
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <p class="hero__kicker reveal">NIGHT MARKET RUNTIME · 23:47:11</p>
+          <h1 id="hero-title" class="reveal">
+            <span>不烧心</span>
+            <span class="hero__title-system">系统<span class="cursor">_</span></span>
+          </h1>
+          <p class="hero__lede reveal">夜市是一座高并发运行的进程池。每个摊位是一个进程，每位顾客是一次请求，而胃——是唯一的生产环境。</p>
+          <div class="hero__actions reveal">
+            <a class="primary-button" href="#story"><span>启动故事</span><b>↘</b></a>
+            <button class="text-button" id="openManifesto" type="button">查看运行原则 <span>⌁</span></button>
+          </div>
+        </div>
+
+        <div class="hero__scene reveal" aria-label="林记馄饨深夜出餐场景">
+          <div class="photo-index" aria-hidden="true"><span>凌晨四点</span><b>04:00</b><small>第一锅骨汤开始运行</small></div>
+          <div class="hero-quote"><span>QUALITY PROMISE</span><p>贵是贵了点，<br>但吃了不烧心。</p></div>
+          <div class="hero-console" aria-hidden="true">
+            <p><i></i> PRODUCTION HEALTHY</p>
+            <p><span>dependency</span><b>fresh@today</b></p>
+            <p><span>error_rate</span><b>0.00%</b></p>
+            <p><span>胃部反馈</span><b>睡得安稳</b></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="world-status reveal" aria-label="世界运行状态">
+        <div><span>ACTIVE PROCESSES</span><b id="activeProcesses">02</b></div>
+        <div><span>REQUESTS SERVED</span><b id="servedRequests">000128</b></div>
+        <div><span>TECH DEBT</span><b id="globalDebt">¥ 0.00</b></div>
+        <div><span>PRODUCTION</span><b class="status-ok" id="globalStatus">NORMAL</b></div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span>向下滚动</span><i></i></div>
+    </section>
+
+    <section class="architecture" id="architecture" aria-labelledby="architecture-title">
+      <div class="section-label"><span>01</span> WORLD ARCHITECTURE</div>
+      <div class="architecture__heading">
+        <h2 id="architecture-title">一条夜市，<br>四层系统。</h2>
+        <p>当世界由程序员设计，所有隐喻都会在凌晨兑现成真实的运行结果。</p>
+      </div>
+      <div class="mapping-grid">
+        <article><span class="mapping-icon">▦</span><small>PROCESS POOL</small><h3>夜市</h3><p>灯火亮起，所有摊位并发运行。</p><b>进程池</b></article>
+        <article><span class="mapping-icon">◎</span><small>REQUEST</small><h3>顾客</h3><p>每一次坐下，都是一次真实请求。</p><b>请求</b></article>
+        <article><span class="mapping-icon">◇</span><small>DEPENDENCY</small><h3>食材</h3><p>今天的新鲜，决定明天是否稳定。</p><b>依赖</b></article>
+        <article class="mapping-grid__critical"><span class="mapping-icon">♥</span><small>PRODUCTION</small><h3>胃</h3><p>舌头会被骗，生产环境不会。</p><b>生产环境</b></article>
+      </div>
+    </section>
+
+    <section class="story-shell" id="story">
+      <div class="story-column">
+        <div class="section-label"><span>02</span> RUNTIME LOG</div>
+
+        <article class="chapter is-active" data-scene="boot" data-index="01">
+          <header><span>BOOT_SEQUENCE</span><time>第 1 年 → 第 3 年</time></header>
+          <h2>先把规矩立住。</h2>
+          <p>林深在夜市支摊第三年。他以前是后端，写了十年接口，被优化那天没哭，回家把围裙洗干净，第二天在街口摆了个馄饨摊。招牌上只写三个字：<strong>林记馄饨。</strong></p>
+          <p>别人问他凭什么卖得比别家贵两块，他说：“我这叫全量回归。”</p>
+          <blockquote>“规矩不能坏。先把规矩立住，路才能越走越宽。”</blockquote>
+        </article>
+
+        <article class="chapter" data-scene="quality" data-index="02">
+          <header><span>DEPENDENCY_CHECK</span><time>每天 04:00</time></header>
+          <h2>新鲜，是唯一允许的依赖。</h2>
+          <p>猪后腿肉当天现绞，用多少绞多少，这叫<strong>不引入过期依赖</strong>；骨汤凌晨四点吊，卖不完的傍晚连锅倒掉，这叫<strong>不把隔夜数据缓存到明天</strong>。</p>
+          <p>皮的厚度、馅的克数、汤的温度，他都记在本子上，像给每碗馄饨写了单元测试。</p>
+          <div class="spec-list" aria-label="林记质量规范">
+            <span><i>皮</i><b>0.8mm</b><em>PASS</em></span>
+            <span><i>馅</i><b>12.0g</b><em>PASS</em></span>
+            <span><i>汤</i><b>82℃</b><em>PASS</em></span>
+          </div>
+        </article>
+
+        <article class="chapter" data-scene="competition" data-index="03">
+          <header><span>NEW_PROCESS_DETECTED</span><time>第 1 天</time></header>
+          <h2>便宜方案，开始抢占流量。</h2>
+          <p>街口对面新开了一家“快香馄饨”。老板老钱定价直接砍到林记的一半：八块管饱，加汤免费。</p>
+          <p>油反复回收，肉是便宜的淋巴肉，靠味精和红油把舌头先麻住。至于身体后半夜怎么报错，他不管。程序员管这叫：<strong>技术债。</strong></p>
+          <div class="price-compare">
+            <span><small>林记 / 完整测试</small><b>¥16</b></span>
+            <i>VS</i>
+            <span class="price-compare__cheap"><small>快香 / 跳过测试</small><b>¥8</b></span>
+          </div>
+        </article>
+
+        <article class="chapter" data-scene="traffic" data-index="04">
+          <header><span>TRAFFIC_MIGRATION</span><time>第 3—10 天</time></header>
+          <h2>流量最诚实，<br>也最势利。</h2>
+          <p>一周之内，林记的队没了。夜班护士小周、出租车司机们都去了对面。热气腾腾，像一场成功的促销活动。</p>
+          <p>同乡劝林深降价。他把一只馄饨下锅，看它稳稳浮起来：“降价容易，改回去难。依赖一旦换成便宜的，再想换回来，得重构整条链路。”</p>
+          <blockquote>销量是今日数据，原则是长期架构。</blockquote>
+        </article>
+
+        <article class="chapter chapter--turn" data-scene="return" data-index="05">
+          <header><span>CACHE_KEY_MATCHED</span><time>第 11 天 22:41</time></header>
+          <h2>贵是贵了点，<br><em>但吃了不烧心。</em></h2>
+          <p>修电脑的老周，在对面吃了两口，放下碗，又绕回林记摊前。馄饨端上来，他呼噜呼噜吃完，抹嘴，撂下这句后来被整条夜市传烂的话。</p>
+          <p>林深擦着碗：“烧心是系统报错。报错日志骗不了人，舌头会被味精骗，胃不会。”</p>
+          <p>那天夜里，小周回来了，几个出租车司机也回来了。他们像一批终于命中正确缓存键的请求。</p>
+        </article>
+
+        <article class="chapter chapter--error" data-scene="crash" data-index="06">
+          <header><span>FATAL_ERROR</span><time>第 11 天 02:17</time></header>
+          <h2>技术债，开始<br>还本付息。</h2>
+          <p>先是三个小伙子半夜上吐下泻，接着有人翻出回收油桶拍了视频。帮工小杨早看不下去，把违规操作交给检查人员。</p>
+          <p>卫生检查一来，快香馄饨连测试都没通过，进程被当场 <code>KILL -9</code>。围观的人想起前几天的反酸，默默把林记的队排到了队尾。</p>
+          <div class="error-card"><span>PRODUCTION INCIDENT</span><b>依赖污染 / 日志缺失 / 健康检查失败</b><em>PROCESS TERMINATED</em></div>
+        </article>
+
+        <article class="chapter chapter--recovery" data-scene="recovery" data-index="07">
+          <header><span>SYSTEM_RECOVERY</span><time>风波之后</time></header>
+          <h2>世界恢复运行。</h2>
+          <p>林记没有趁机涨价，也没有开分店。林深只是在本子上添了一行：版本 v3.1，依赖全部新鲜，日志完整，零报错。</p>
+          <p>有人问，这个世界到底奖励什么样的人。林深把一碗馄饨递出去，蒸汽模糊了眼镜。</p>
+          <blockquote>“它从不奖励最便宜的方案，<br>它只奖励不报错的方案。”</blockquote>
+        </article>
+      </div>
+
+      <aside class="runtime" aria-label="故事实时运行监控">
+        <div class="runtime__topbar">
+          <div><i></i><i></i><i></i></div>
+          <span>world.exe / night_market</span>
+          <b id="runtimeClock">23:47:11</b>
+        </div>
+
+        <div class="runtime__scene">
+          <div class="runtime__heading"><span>PROCESS MONITOR</span><b id="sceneCounter">01 / 07</b></div>
+          <div class="stall-grid">
+            <section class="stall-card stall-card--lin" id="linStall">
+              <header><span><i></i> PID 0417</span><b>林记</b></header>
+              <div class="stall-card__metric"><small>PRICE</small><strong>¥16</strong></div>
+              <div class="queue" id="linQueue" aria-label="林记请求队列"></div>
+              <footer><span>HEALTH</span><b>100%</b></footer>
+            </section>
+            <section class="stall-card stall-card--qian" id="qianStall">
+              <header><span><i></i> PID 0818</span><b>快香</b></header>
+              <div class="stall-card__metric"><small>PRICE</small><strong>¥8</strong></div>
+              <div class="queue" id="qianQueue" aria-label="快香请求队列"></div>
+              <footer><span>HEALTH</span><b id="qianHealth">64%</b></footer>
+            </section>
+          </div>
+        </div>
+
+        <div class="debt-panel">
+          <div><span>TECH_DEBT.ACCRUED</span><b id="debtValue">¥ 0.00</b></div>
+          <div class="debt-track"><i id="debtBar"></i></div>
+          <small id="debtHint">依赖稳定，暂无隐性成本</small>
+        </div>
+
+        <div class="terminal" id="terminal" aria-live="polite">
+          <p><time>23:47:11</time><span class="log-info">INFO</span> 夜市进程池已启动</p>
+          <p><time>23:47:12</time><span class="log-ok">PASS</span> 林记依赖检查通过</p>
+          <p><time>23:47:13</time><span class="log-ok">PASS</span> 胃部生产环境正常</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="manifesto" aria-labelledby="manifesto-title">
+      <div class="manifesto__stamp">v3.1</div>
+      <p class="section-label"><span>03</span> SYSTEM MANIFESTO</p>
+      <h2 id="manifesto-title">你省下的每一笔测试成本，<br>系统都会在某个凌晨，<br><em>替你记成技术债。</em></h2>
+      <p>连本带利，一次清算。</p>
+      <button class="restore-button" id="restoreWorld" type="button"><span>一键恢复世界</span><small>RUN /world --repair</small><b>↻</b></button>
+      <div class="restore-result" id="restoreResult" role="status">
+        <i>✓</i><span><b>世界修复完成</b><small>依赖已更新 · 日志已补全 · 胃部零报错</small></span>
+      </div>
+    </section>
+
+    <section class="closing" aria-label="故事结尾">
+      <div class="closing__steam" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p>那天晚上</p>
+      <h2>整条街的胃，<br>都睡得很安稳。</h2>
+      <div class="closing__line"></div>
+      <span>END OF LOG · NO ERRORS FOUND</span>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>《不烧心系统》</span>
+    <p>写给所有不拿生产环境做实验的人。</p>
+    <a href="#top">回到顶部 ↑</a>
+  </footer>
+
+  <dialog class="principles-dialog" id="principlesDialog">
+    <button class="dialog-close" id="closeManifesto" type="button" aria-label="关闭">×</button>
+    <small>WORLD.EXE / CORE PRINCIPLES</small>
+    <h2>这个世界的四条运行原则</h2>
+    <ol>
+      <li><b>01</b><span><strong>不引入过期依赖</strong>食材必须新鲜，承诺必须有效。</span></li>
+      <li><b>02</b><span><strong>不缓存隔夜数据</strong>昨日的侥幸，不能成为今日的输入。</span></li>
+      <li><b>03</b><span><strong>不跳过生产测试</strong>舌头可以被欺骗，身体不会。</span></li>
+      <li><b>04</b><span><strong>不透支未来稳定性</strong>所有技术债，都会在凌晨结算。</span></li>
+    </ol>
+  </dialog>
+
+  <div class="reading-progress" aria-hidden="true"><i id="readingProgress"></i></div>
+  <script src="script.js"></script>
+</body>
+</html>
